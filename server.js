@@ -10,13 +10,14 @@ io.on('connect', function (socket) {
     io.emit('logger:history');
 
     socket.on('server:results', function (data) {
-        console.log("server:results");
+      if(data) {
         io.emit('client:display', data);
+      }
     });
 });
 
 setInterval(function () {
-    io.emit('logger:run');
+    io.emit('logger:read');
 }, interval);
 
 app.use('/', express.static('client'));
