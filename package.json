@@ -1,32 +1,28 @@
 {
-  "name": "every-bit-matters",
+  "name": "IOT-Hub",
   "version": "1.0.0",
-  "description": "Workshop providing an introduction to web-architecture through a step-by-step tutorial on how to make a full-stack web application with WebSockets. The domain is speedtesting – where Every Bit Matters.",
+  "description": "A hub for IOT-devices to communicate through, using websockets. The hub expects sensors to send sensor:data events to the hub, which the hub will redistribute to connected clients as client:display. It also hosts an example client at /client.",
   "main": "web.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/krsjan/every-bit-matters.git"
+    "url": "git+https://github.com/mapster/iothub.git"
   },
   "scripts": {
     "start": "node server.js"
   },
   "keywords": [
     "WebSockets",
-    "speedtesting",
     "express",
-    "socket.io"
+    "socket.io",
+    "IoT",
+    "Hub"
   ],
-  "author": "@krsjan, @teodoran",
+  "author": "@krsjan, @teodoran, @mapster",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/krsjan/every-bit-matters/issues"
-  },
-  "homepage": "https://github.com/krsjan/every-bit-matters#readme",
+  "homepage": "https://github.com/mapster/iothub#readme",
   "dependencies": {
-    "d3": "^3.5.14",
     "express": "^4.13.4",
     "socket.io": "^1.4.5",
-    "socket.io-client": "^1.4.5",
-    "speedtest-net": "^1.2.4"
+    "socket.io-client": "^1.4.5"
   }
 }

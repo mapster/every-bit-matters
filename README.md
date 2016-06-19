@@ -1,10 +1,14 @@
-every-bit-matters
+IOT-Hub
 =================
 
-Hands-on workshop in web architecture with [node.js](http://www.nodejs.org) and deployment with [Heroku](http://heroku.com).
+A Hub using websockets for IoT devices to communicate through, noth sensor-devices and clients. It expects sensors to pass readings through the 'sensor:data' event using the following scheme (with potential custom changes if necessary):
+{
+    id: 'some individual identifier for a device',
+    type: 'the class of the device, e.g. sensortag',
+    sensor: 'the type of the sensor, e.g irTemperature',
+    data: someObjectWithSensorData
+}
 
-Goal: Learn to build and deploy a web application for visualizing data from and controlling distributed speed test loggers.
+The hub will redistribute the payload of 'sensor:data' events to all connected devices as 'client:display' events.
+It is up to connected clients to interpret and use the passed data. We propose the above payload structure of sensor reading events to facilitate multiple clients receiving and interpreting data from sensor devices.
 
-### Get started
-
-Install the dependencies outlined in the [installation guide](https://github.com/krsjan/every-bit-matters/wiki/installation-guide). Then head over to the [tutorial](https://github.com/krsjan/every-bit-matters/wiki/0:-Hello-Client-and-Server).
