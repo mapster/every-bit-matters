@@ -1,11 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Every Bit Matters</title>
     <link href="css/client.css" rel="stylesheet">
-    <script src="client.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="d3.js"></script>
 </head>
 <body>
-    <h1>Every Bit Matters Workshop</h1>
+<div id="wrapper">
+
+    <h1>Temperature readings</h1>
+    <table>
+        <thead>
+          <tr>
+              <th>Device</th>
+              <th>Object</th>
+              <th>Ambient</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<script src="client.js"></script>
+
 </body>
 </html>
