@@ -5,24 +5,37 @@ var io = require('socket.io')(http);
 var port = process.env.PORT || 3000;
 var interval = process.env.TIME_INTERVAL || 10000;
 
-io.on('connect', function (socket) {
-    console.log('Looksies! We got ourselves a user!');
-    io.emit('logger:history');
+/**
+ * IOT-Hub.
+ * Connect sensor devices and clients to this hub.
+ * Data from sensor devices will be redistributed to all other devices and clients.
+ * These clients may choose to use the data based on their custom filters.
+ *
+ * We recommend the minimum event payload structure to be the following:
+ * {
+ * 	id: 'some individual identifier for a device',
+ * 	type: 'the class of the device, e.g. sensortag',
+ * 	sensor: 'the type of the sensor, e.g irTemperature',
+ * 	data: someObjectWithSensorData
+ * }
+ * Add any other fields if necessary.
+ *
+ * See https://github.com/mehmandarov/sensortag-gettingstarted for an example
+ * IOT-Hub-client for the sensortag device.
+ */
 
-    socket.on('server:results', function (data) {
-      if(data) {
-        io.emit('client:display', data);
+io.on('connect', function (socket) {
+    console.log('New client or sensor connected.');
+
+    socket.on('sensor:data', function (payload) {
+      if(payload) {
+        io.emit('client:display', payload);
       }
     });
 });
 
-setInterval(function () {
-    io.emit('logger:read');
-}, interval);
-
+// Host a simple web-client example from /client
 app.use('/', express.static('client'));
-app.use('/', express.static('node_modules/d3'));
-
 http.listen(port, function () {
-    console.log('Running our app at http://localhost:3000')
+    console.log('Running IOT-Hub at http://localhost:' + port)
 });
