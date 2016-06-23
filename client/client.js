@@ -31,6 +31,6 @@ socket.on('client:display', function (payload) {
     tr.appendChild(object);
     tr.appendChild(ambient);
     // append row to tbody
-    tbody.appendChild(tr);
+    tbody.insertBefore(tr, tbody.firstChild);
   }
 });
