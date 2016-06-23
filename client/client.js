@@ -20,15 +20,15 @@ socket.on('client:display', function (payload) {
     var rightEl = document.getElementById('right-button');
 
     if(payload.data.left == 'true') {
-      left.textContent = 'pressed';
+      leftEl.textContent = 'pressed';
     } else {
-      left.textContent = '';
+      leftEl.textContent = '';
     }
 
     if(payload.data.right == 'true') {
-      right.textContent = 'pressed';
+      rightEl.textContent = 'pressed';
     } else {
-      left.textContent = '';
+      rightEl.textContent = '';
     }
   }
 
