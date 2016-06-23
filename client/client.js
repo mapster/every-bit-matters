@@ -15,6 +15,23 @@ socket.on('connect', function (data) {
 socket.on('client:display', function (payload) {
   var tbody = document.getElementsByTagName('tbody')[0];
 
+  if(payload.type == 'sensortag' && payload.sensor == 'keyChange') {
+    var leftEl = document.getElementById('left-button');
+    var rightEl = document.getElementById('right-button');
+
+    if(payload.data.left == 'true') {
+      left.textContent = 'pressed';
+    } else {
+      left.textContent = '';
+    }
+
+    if(payload.data.right == 'true') {
+      right.textContent = 'pressed';
+    } else {
+      left.textContent = '';
+    }
+  }
+
   if(payload.type == 'sensortag' && payload.sensor == 'irTemperature') {
     // add table row
     var tr = document.createElement('tr');
