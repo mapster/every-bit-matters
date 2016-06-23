@@ -1,4 +1,4 @@
-var socket = io();
+var socket = io('http://10.0.0.138:3001');
 
 /**
  * Simple example IOT-Hub client.
